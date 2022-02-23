@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="http://www.springframework.org/schema/beans"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:mvc="http://www.springframework.org/schema/mvc"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans 
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+    http://www.springframework.org/schema/context 
+    http://www.springframework.org/schema/context/spring-context-3.0.xsd" >
+    
+    
+    
+<!--   creating beans using setter injections-->
+<!--    creating bean for address    -->
+	<bean id="Address" class="AssignmentQ1.Address">  
+		<property name="street" value="Irrigation housing Society"/>  
+		<property name="city" value="Nagpur"/>  
+		<property name="state" value="Maharashtra"/> 
+		<property name="zip" value="440022"/> 
+		<property name="country" value="India"/>  
+	</bean>  
+	
+<!--    creating bean for customer-->	  
+	<bean id = "Customer" class= "AssignmentQ1.Customer">  
+		<property name="customerId" value="123"/>  
+		<property name="customerName" value="Himanshu Singh"/>
+		<property name="customerContact" value="7788994455"/>  
+		<property name="CustomerAddress" ref="Address"/>  
+	</bean>
+
+<!--    creating beans using constructor injections-->
+<!--    creating bean for address-->
+    <bean id="Address1" class="AssignmentQ1.Address" autowire="byName">
+        <constructor-arg name="street" value="Arogya Nagar"/>
+        <constructor-arg name="city" value="Akola"/>
+        <constructor-arg name="state" value="Maharashtra"/>
+        <constructor-arg name="zip" value="444004"/>
+        <constructor-arg name="country" value="India"/>
+    </bean>
+
+<!--    creating bean for customer-->
+    <bean id="Customer1" class="AssignmentQ1.Customer" autowire="byName">
+        <constructor-arg name="customerId" value="321"/>
+        <constructor-arg name="customerName" value="Palash"/>
+        <constructor-arg name="customerContact" value="8899665544"/>
+        <constructor-arg name="CustomerAddress" ref="Address1"/>
+    </bean>
+
+
+<context:annotation-config />
+<context:component-scan base-package="controller" />
+        
+</beans>    
